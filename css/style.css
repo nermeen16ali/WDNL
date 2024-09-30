@@ -137,30 +137,46 @@ header .dropdown-menu{
     background-color: #fff;
     color: var(--main-color);
     transition: var(--transition-hover);
+    .dropdown-item{
+        padding: 10px 22px 10px 10px;
+    }
+    .dropdown-item:focus, .dropdown-item:hover{
+        color: var(--main-color);
+        background-color: var(--light_aqua_opacity_50_color);
+    }
+    &.show{
+        border-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+    }
 }
-header .dropdown-menu .dropdown-item{
-    padding: 10px 22px 10px 10px;
-}
-header .dropdown-menu .dropdown-item:focus, .dropdown-item:hover{
-    color: var(--main-color);
-    background-color: var(--light_aqua_opacity_50_color);
-}
-header .dropdown-menu.show{
-    border-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    margin-top: -1px;
+.navbar-expand-lg .navbar-nav .nav-link{
+    padding-right: unset;
+    padding-left: unset;
 }
 .nav-link.dropdown-toggle {
-    padding: 10px 6px 9px 9px;
+    padding: 9px !important;
     border: 1px solid #BACEDE;
     background-color: #F2F8FD;
     border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     &.show{
         border-bottom: 0;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
+}
+.dropdown-toggle::after{
+    border: 0;
+    content: url(../img/poly.svg);
+    margin-top: -4px;
+}
+.country_flag{
+    margin-right: 6px;
+    border-radius: 4px;
 }
 .navbar {
     transition: var(--transition-hover);
@@ -305,6 +321,9 @@ h4{
 .location_text p:not(:first-child) {
     margin-bottom: 10px;
 }
+.better_life_path .location_text p:not(:last-child) {
+    margin-bottom: 10px;
+}
 .world_map_col {
     margin-top: 35px;
     padding-right: 0;
@@ -333,7 +352,6 @@ h4{
 .benefit h5 {
     font-weight: 700;
     margin-bottom: 5px;
-    text-transform: capitalize;
 }
 .icon_box.circled_icon_container, .circled_icon_container {
     border-radius: 32.5px;
@@ -628,7 +646,8 @@ footer .container {
     margin-right: 20px;
 }
 .Our_job {
-    background-image: url(../img/Our_job.png);
+    /* background-image: url(../img/Our_job.png); */
+    background-image: url(../img/ourjob.png);
     padding-top: 116px;
     padding-bottom: 103px;
     background-repeat: no-repeat;
@@ -728,10 +747,15 @@ h3 span {
     margin-bottom: 36px;
 }
 .offer_img_container {
-    width: 79px;
-    border-radius: 14px;
+    border-radius: 6px;
+    height: 79px;
     border: 1px solid #FFFFFF;
     overflow: hidden;
+}
+.offer_img_container .img-fluid{
+    height: 80px;
+    min-width: 80px;
+    max-width: 80px;
 }
 .offer_text h5{
     margin-bottom: 20px;
@@ -768,12 +792,12 @@ h3 span {
     padding-bottom: 86px;
 }
 .services h2 {
-    margin-bottom: 12px;
+    margin-bottom: 36px;
 }
 .services .form_btn {
     margin-top: 20px;
+    display: block;
     width: fit-content;
-    /* margin-inline: auto; */
     padding-inline: 59.5px;
 }
 .main_btn {
@@ -857,13 +881,12 @@ h3 span {
 }
 .slide-item img{
     width: 340px;
-    /* height: 369px; */
     object-fit: cover;
     border-radius: 14px;
-    &:first-child{
+}
+.slide-item img:first-child{
         margin-bottom: 34px;
     }
-}
 .portfolio{
     padding-block: 50px;
     h2{
@@ -945,6 +968,11 @@ h3 span {
     margin-bottom: 25px;
 }
 /* ======================================= vacancy page styles ==================================*/
+.job_sum_img img.img-fluid{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .work_Europe.container-fluid{
     padding-inline: 25px;
     padding-top: 13px;
@@ -1017,7 +1045,6 @@ h3 span {
 /* ======================================= Work page styles ==================================*/
 .job_sum_img{
     overflow: hidden;
-    border-radius: 4px;
 }
 .job_summary{
     padding: 12px 15px 17px 15px;
@@ -1074,11 +1101,31 @@ h3 span {
 }
 .job_sum_img{
     width: 112px;
-    height: 112px;
+    height: 138px;
     margin-right: 8px;        
 }
 textarea.form-control {
     height: 100px;
+}
+.terms-form label + p{
+    margin-top: 12px;
+    margin-bottom: 32px;
+}
+.terms-form p, .terms-form form label{
+    font-weight: 300;
+    line-height: 19.2px;
+    font-family: Roboto;
+    color: rgba(14, 34, 55, 0.9);
+    letter-spacing: 0.04em;
+}
+.terms-form p button{
+    font-weight: 700;
+    color: rgba(14, 34, 55, 0.9);
+    background-color: none;
+    border: none;
+}
+.terms-form .form_btn{
+    margin-top: 25px;
 }
 @media(max-width: 991px){
     .em_countries{
@@ -1136,8 +1183,7 @@ textarea.form-control {
         margin-top: 41px;
     }
     .navbar-nav {
-        gap: 18px;
-        padding-top: 24px;
+        padding-block: 24px;
     }
     .navbar-collapse {
         right: -280px;
@@ -1166,7 +1212,7 @@ textarea.form-control {
         line-height: 18px;
     }
     .benefit h5{
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
         line-height: 19.6px;
         word-break: break-word;
@@ -1184,7 +1230,7 @@ textarea.form-control {
         padding: 15px 10px 14px 10px;
     }
     .cooperation_benefits.ru_benefits .benefit{
-        min-height: 266px;
+        min-height: 285px;
     }
     .benefit_upper{
         gap: 6px;
@@ -1195,11 +1241,12 @@ textarea.form-control {
         margin-bottom: 38px;
     }
     .employee_countries h3:has( +.contact_form){
-        margin-bottom: 52px;
+        margin-top: 40.7px;
+        margin-bottom: 38px;
     }
     .employee_countries .common_text{
-        margin-top: 21.7px;
-        margin-bottom: 50px;
+        margin-top: 40.7px;
+        margin-bottom: 38px;
     }
     .endless_possibilities .img-container, .services .img-container{
         margin-top: 25px;
@@ -1227,7 +1274,6 @@ textarea.form-control {
         height: 375px;
     }
     .contact_offices .contact_office:first-child{
-        /* margin-top: -60px; */
         margin-bottom: 20px;
     }
     .contact_offices{
@@ -1244,6 +1290,9 @@ textarea.form-control {
         height: 20px;
         border-radius: 6px;
         margin-right: 6px;
+    }
+    .cont_off_icon img{
+        width: 12px;
     }
     .cont_off_detail .common_text{
         font-size: 14px;
@@ -1269,11 +1318,25 @@ textarea.form-control {
     }
     header .dropdown-menu{
         .dropdown-item {
-            padding: 10px 16px 10px 10px;
+            padding: 10px 13px 10px 10px;
         }
+    }
+    .navbar-nav {
+        height: 100%;
+    }
+    .services h2{
+        margin-bottom: 8px;
     }
 }
 @media (max-width: 768px) {
+    .job_offers.work_Europe_jobs{
+        padding-top: 32px;
+        padding-bottom: 32px;
+        margin-top: 32px;
+    }
+    .offer_img_container .img-fluid{
+        height: 40px;
+    }
     .hero_text p{
         font-size: 14px;
         line-height: 20.3px;
@@ -1502,7 +1565,7 @@ textarea.form-control {
     }
     .alt_btn{
         padding: 12px 32px;
-        font-size: 10px;
+        font-size: 13px;
         line-height: 7.03px;
         letter-spacing: 0.11em;
         border-radius: 28px;
@@ -1563,6 +1626,9 @@ textarea.form-control {
         line-height: 11.9px;
         letter-spacing: 0.08em;
     }
+    .services .form_btn{
+        margin-inline: auto;
+    }
     .candidates_job_offers .job_offer{
         padding: 19px 8px;
         gap: 10px;
@@ -1580,9 +1646,6 @@ textarea.form-control {
         letter-spacing: 0.11em;
         min-width: unset !important;
     }
-    /* :not(:has(.)) .job_offers .main_btn{
-        min-width: 204px;
-    } */
     .endless_possibilities_text h2{
         margin-bottom: 10px;
     }
@@ -1623,7 +1686,6 @@ textarea.form-control {
     }
     .work_dev_head span{
         font-size: 10px;
-        /* line-height: 22.8px; */
         letter-spacing: 0.08em;
     }
     .work_dev_head{
@@ -1670,10 +1732,6 @@ textarea.form-control {
         margin-bottom: 26px;
         padding-inline: unset;
     }
-    .navbar-nav {
-        gap: 52px;
-        /* padding-top: 24px; */
-    }
     .col-12:has( .world_map), .col-12:has( .world_map ){
         padding-right: 0;
         padding-left: 0;
@@ -1696,9 +1754,10 @@ textarea.form-control {
         margin: 0 9px;
     }
     .slide-item img{
-        &:first-child {
-            margin-bottom: 11px;
-        }
+        display: block;
+    }
+    .slide-item img:first-child {
+        margin-bottom: 11px;
     }
     .WDNL_recruiting{
         padding-top: 45px;
@@ -1731,6 +1790,9 @@ textarea.form-control {
     }
     .recruite-box img{
         max-width: 18px;
+    }
+    .terms-form .form-check p{
+        font-size: 12px;
     }
 }
 @media (min-width: 576px) { 
@@ -1816,10 +1878,6 @@ textarea.form-control {
     footer{
         padding-top: 39px;
         padding-bottom: 32px;
-    }
-    .partner {
-        padding-top: 118px;
-        padding-bottom: 105px;
     }
     .employers_hero .hero_text p {
         margin-bottom: 3px;
@@ -1910,8 +1968,6 @@ textarea.form-control {
     .work_box{
         box-shadow: 0px 29px 40.2px 0px #00000012;
         border-radius: 20px; 
-    }
-    .work_box{
         padding: 42px 48px 18px 64px;
     }
     .work_article{
@@ -1930,9 +1986,28 @@ textarea.form-control {
     }
 }
 @media (min-width: 992px) { 
-    .contact_offices .contact_office:first-child{
-        margin-top: -60px;
-        margin-bottom: 30px;
+    .work_box{
+        position: relative;
+    }
+    .work_img{
+        width: 360px;
+        overflow: hidden;
+        position: absolute;
+        top: -55px;
+        right: 0;
+    }
+    .work_img img{
+        border-radius: 14px;
+    }
+    .work_box .row{
+        margin-top: 61px;
+    }
+    .profile_cooperation .profile_part {
+    min-width: 127px;
+    }
+    .contact_office{
+        padding: 33px 71px 38px 69px;
+        margin-top: -80px;
     }
     .representative_text:not(.rep-ru-txt){
         padding-right: 57px;
@@ -1975,8 +2050,8 @@ textarea.form-control {
         margin-top: 24px;
     }
     .partner {
-        padding-top: 118px;
-        padding-bottom: 105px;
+        padding-top: 80px;
+        padding-bottom: 100px;
     }
     .contact_text.con_tx_ru {
         padding-left: 26px;
@@ -2007,18 +2082,15 @@ textarea.form-control {
         font-size: 14px;
     }
     .partner_text {
-        max-width: 526px;
+        max-width: 605px;
         padding-left: 32px;
     }
-    /* .employers_contact .contact_text {
-        padding-left: 30px;
-    } */
     .contact_text:not(.con_tx_ru){
         max-width: 606px;
     }
     .employer_map {
         left: 0;
-        z-index: 2;
+        z-index: 1;
     }
     .employee_countries form{
         position: relative;
@@ -2045,22 +2117,28 @@ textarea.form-control {
     .endless_possibilities {
         padding-block: 39px;
     }
-    /* .endless_possibilities .img-container {
-        margin-top: 35px;
-    } */
     .endless_possibilities_text {
         padding-left: 24px;
     }
     .endless_possibilities_text p{
         padding-right: 76px;
     }
-    /* .services_text{
+    .services_text.short_text{
         padding-right: 30px;
-    } */
+        p{
+            max-width: 520px;
+        }
+    }
+    .services_text.short_text h2{
+        margin-bottom: 30px;
+    }
     .location_text p {
         max-width: 559px;
     }
     .location_text p:not(:first-child) {
+        margin-bottom: 15px;
+    }
+    .better_life_path .location_text p:not(:last-child){
         margin-bottom: 15px;
     }
     .why_choose{
@@ -2080,9 +2158,6 @@ textarea.form-control {
     .why_choose .benefit {
         min-height: 255px;
     }
-    /* .why_choose.why_choose_ru .benefit{
-        min-height: 290px;
-    } */
     .partners_hero_img{
         margin-top: 20px;
     }
@@ -2106,7 +2181,7 @@ textarea.form-control {
     .job_sum_img {
         max-width: 200px;
         margin-right: 15px;
-        /* height: 197px; */
+        border-radius: 8px;
         width: 200px;
     }
     .svg_sum {
@@ -2118,11 +2193,9 @@ textarea.form-control {
     }
     .em_countries .country_div{
         padding: 9px 15px;
-        /* min-width: 200px; */
         border-radius: 10px;
         margin-bottom: 24px;
         gap: 14px;
-        width: fit-content;
     }
     .sum_item span{
         font-size: 16px;
@@ -2141,7 +2214,7 @@ textarea.form-control {
         height: 72px;
     }
     .navbar-nav {
-        gap: 65px;
+        gap: 80px;
         font-size: 16px;
     }
     .hero_text h1 {
@@ -2176,9 +2249,6 @@ textarea.form-control {
     .job_offers{
         padding-inline: 140px;
     }
-    /* .services_text {
-        padding-right: 53px;
-    } */
      .pl_srv_txt .main_btn{
         width: 96%;
      }
@@ -2188,6 +2258,13 @@ textarea.form-control {
     }
     .work_Europe.container-fluid{
         padding-inline: 72px;
+    }
+     .work_img{
+        width: 543px;
+        top: -100px;
+    }
+    .work_box .row{
+        margin-top: 155px;
     }
 }
 @media (min-width: 1400px) { 
@@ -2200,12 +2277,6 @@ textarea.form-control {
         padding-top: 91px;
         height: calc(100vh + 72px);
     }
-    /* .contact_text {
-        padding-left: unset;
-    } */
-    /* .partner_text p{
-        pdding-right: 32px;
-    } */
     .employee_countries{
         padding-top: 173px;
     }
@@ -2232,9 +2303,6 @@ textarea.form-control {
     .employee_countries form {
         z-index: 1;
     }
-    /* .why_choose{
-        padding-inline: 200px;
-    } */
     .job_offers{
         padding-inline: 160px;
     }
@@ -2263,10 +2331,7 @@ textarea.form-control {
     }
     .em_countries .country_div{
         min-width: 218px;
-    }
-    .contact_office{
-        padding: 33px 71px 38px 69px;
-        margin-top: -80px;
+        max-width: 218px;
     }
     .cont_off_detail{
         padding-left: 32px;
